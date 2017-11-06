@@ -1,0 +1,21 @@
+.imgContainer {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    float: left;
+}
+.imgContainer .top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0.55;
+}
+
+.imgContainer .top2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0.85;
+}
