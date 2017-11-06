@@ -3,6 +3,7 @@ import axios from "axios"
 const config = { 
     crossdomain: true,
     
+    
 }
 
 export function fetchChecks() {

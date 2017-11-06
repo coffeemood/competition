@@ -21,7 +21,7 @@ export default class Layout extends React.Component {
         
         success: "https://cdn0.iconfinder.com/data/icons/round-ui-icons/512/tick_green.png",
         failure: "http://www.onlygfx.com/wp-content/uploads/2016/09/red-denied-stamp-1.png",
-        SportBet: {
+        SportsBet: {
             points: 0,
             playAble: true,
             sound: null,
@@ -110,14 +110,15 @@ export default class Layout extends React.Component {
         const { checks } = newProps
         
         for (var i in checks){
-            let name = checks[i].label
+            let n = checks[i].label
+            let name = n.split(" ")[0]
             let status = checks[i].state
             this.checkStat(name,status)
         }
         
         let checks2 = checks
         for (var i in checks2) {
-            if (checks2[i].label !== "CrownBet" && checks2[i].label !== "WilliamHills")
+            if (!checks2[i].label.includes("CrownBet") && checks2[i].label.includes("WilliamHills"))
                 delete checks2[i];
         }
         
@@ -130,8 +131,9 @@ export default class Layout extends React.Component {
     }
     
     checkStat(name, status) {
+        
         let cstate = this.state
-        if (name !== "CrownBet" && name !== "WilliamHills"){
+        if (!name.includes("CrownBet") && !name.includes("WilliamHills")){
             if (status !== 1){
                 if (cstate[name].playAble == true){
                     cstate[name].sound = <Sound url="https://s0.vocaroo.com/media/download_temp/Vocaroo_s0Hk3Mxh0aRh.mp3" autoLoad="true" playStatus={Sound.status.PLAYING} ></Sound>
@@ -154,7 +156,12 @@ export default class Layout extends React.Component {
         let cstate = this.state
         for (var i in c){
             let name = c[i].label
-            cstate[name].points += c[i].state
+            if (name.includes("WilliamHills")){
+                cstate.WilliamHills.points += c[i].state
+            }else{
+                cstate.CrownBet.points += c[i].state
+            }
+            
         }
         
         let apiArr = ["CrownBet", "WilliamHills"]
@@ -185,7 +192,7 @@ export default class Layout extends React.Component {
         
         const { checks } = this.props; 
         console.log(this.props)
-        var { Bet365, SportBet, CrownBet, Neds, WilliamHills, TopBetta, BetFair, UniBet, LadBrokes, PalmerBet } = this.state
+        var { Bet365, SportsBet, CrownBet, Neds, WilliamHills, TopBetta, BetFair, UniBet, LadBrokes, PalmerBet } = this.state
         var allChecks = [] 
         let imgStyle = {
                 borderRadius: "50%",
