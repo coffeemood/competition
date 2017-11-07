@@ -118,7 +118,7 @@ export default class Layout extends React.Component {
         
         let checks2 = checks
         for (var i in checks2) {
-            if (!checks2[i].label.includes("CrownBet") && checks2[i].label.includes("WilliamHills"))
+            if (!checks2[i].label.includes("CrownBet") && !checks2[i].label.includes("WilliamHills"))
                 delete checks2[i];
         }
         
@@ -158,6 +158,7 @@ export default class Layout extends React.Component {
             let name = c[i].label
             if (name.includes("WilliamHills")){
                 cstate.WilliamHills.points += c[i].state
+                console.log(c[i].state)
             }else{
                 cstate.CrownBet.points += c[i].state
             }
@@ -216,12 +217,12 @@ export default class Layout extends React.Component {
                     }
                     break;
                     
-                case "SportBet":
-                    if (SportBet.points < 1){
-                        allChecks.push(<div class="imgContainer">{SportBet.sound}<img class="top2" style={imgStyle} src={this.state.failure}/><img style={imgStyle} src={SportBet.icon}/></div>)
+                case "SportsBet":
+                    if (SportsBet.points < 1){
+                        allChecks.push(<div class="imgContainer">{SportsBet.sound}<img class="top2" style={imgStyle} src={this.state.failure}/><img style={imgStyle} src={SportsBet.icon}/></div>)
                     }
                     else{
-                        allChecks.push(<div class="imgContainer"><img class="top" style={imgStyle} src={this.state.success}/><img style={imgStyle} src={SportBet.icon}/></div>)
+                        allChecks.push(<div class="imgContainer"><img class="top" style={imgStyle} src={this.state.success}/><img style={imgStyle} src={SportsBet.icon}/></div>)
                     }
                     break;
                     
