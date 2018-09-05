@@ -1,7 +1,7 @@
 {
-  "name": "react-tutorials",
+  "name": "CompetitionBoard",
   "version": "0.0.0",
-  "description": "",
+  "description": "Track status of competitions for Melbourne Cup day ",
   "main": "webpack.config.js",
   "dependencies": {
     "axios": "^0.12.0",
